@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ALDebugView_Example' do
+  pod 'ALDebugView', :path => '../'
+
+  target 'ALDebugView_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
