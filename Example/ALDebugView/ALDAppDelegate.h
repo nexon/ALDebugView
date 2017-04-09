@@ -7,8 +7,10 @@
 //
 
 @import UIKit;
+//#import <ALDebugListViewController/ALDebugListViewController.h>
+#import  "ALDebugListViewController.h"
 
-@interface ALDAppDelegate : UIResponder <UIApplicationDelegate>
+@interface ALDAppDelegate : UIResponder <UIApplicationDelegate, ALDebugViewDelegate, ALDebugViewDataSource>
 
 @property (strong, nonatomic) UIWindow *window;
 

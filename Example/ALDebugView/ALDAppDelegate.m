@@ -8,11 +8,36 @@
 
 #import "ALDAppDelegate.h"
 
+@interface ALDAppDelegate()
+@property (nonatomic) NSDictionary<NSNumber *, NSArray *> *items;
+@end
+
+
 @implementation ALDAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    self.items = @{
+                   @(ALDDataSourceCellTitleType): @[
+                                                   @"title1",
+                                                   @"title2",
+                                                   @"this is a title a little more large"
+                                                   ],
+                   @(ALDDataSourceCellDescriptionType): @[
+                                                        @"description1description1description1description1description1description1description1description1",
+                                                        @"Description 2 Description 2 Description 2 Description 2 Description 2 Description 2 Description 2 ",
+                                                        @"Description!! :D"
+                                                        
+                                                        ],
+                   @(ALDDataSourceCellSectionTitleType): @[
+                           @"Environment Variables"
+                           ]
+                   };
+    
+    [ALDebugListViewController sharedDebugView].delegate   = self;
+    [ALDebugListViewController sharedDebugView].datasource = self;
+    
     return YES;
 }
 
@@ -43,4 +68,31 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+#pragma mark - ALDebugViewListDelegate
+
+- (NSString *)ALDebugViewTitleForDebugView:(ALDebugListViewController *)aDebugView {
+    return @"Details";
+}
+
+- (void)ALDebugViewWillCloseView:(ALDebugListViewController *)aDebugView {
+    NSLog(@"Will Close!");
+}
+
+#pragma mark - ALDebugListViewDataSource
+
+- (NSUInteger)ALDebugViewNumberOfRows:(ALDebugListViewController *)aDebugView {
+    return self.items[@(ALDDataSourceCellTitleType)].count;
+}
+
+- (NSString *)ALDebugView:(ALDebugListViewController *)aDebugView titleForCellAtRowIndexPath:(NSIndexPath *)aIndexPath {
+    return [self.items[@(ALDDataSourceCellTitleType)] objectAtIndex:aIndexPath.row];
+}
+
+- (NSString *)ALDebugView:(ALDebugListViewController *)aDebugView descriptionForCellAtRowIndexPath:(NSIndexPath *)aIndexPath {
+    return [self.items[@(ALDDataSourceCellDescriptionType)] objectAtIndex:aIndexPath.row];
+}
+
+- (NSString *)ALDebugView:(ALDebugListViewController *)aDebugView titleForSection:(NSUInteger)aInteger {
+    return [self.items[@(ALDDataSourceCellSectionTitleType)] objectAtIndex:aInteger];
+}
 @end
