@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ALDebugView'
-  s.version          = '0.4.3'
+  s.version          = '0.4.4'
   s.summary          = 'A Simple Visual Aid to display Development/QA data on the device. So you can see any relevant information on a shake!. '
 
 # This description is used to generate tags and improve search results.
