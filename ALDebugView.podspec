@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ALDebugView'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of ALDebugView.'
+  s.version          = '0.4.0'
+  s.summary          = 'A Simple Visual Aid to display Development/QA data on the device. '
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -26,7 +26,7 @@ TODO: Add long description of the pod here.
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'nexon' => 'alberto.lagos@gmail.com' }
   s.source           = { :git => 'https://github.com/nexon/ALDebugView.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.social_media_url = 'https://twitter.com/nexon'
 
   s.ios.deployment_target = '8.0'
 
