@@ -18,11 +18,18 @@ typedef NS_ENUM(NSUInteger, ALDDataSourceCellType) {
     ALDDataSourceCellDescriptionType
 };
 
+typedef NS_ENUM(NSUInteger, ALDDeploymentMode) {
+    ALDDeploymentDebugMode,
+    ALDDeploymentNoneMode
+    
+};
+
 @interface ALDebugListViewController : UIViewController
 
-@property (weak) id<ALDebugViewDelegate>             delegate;
-@property (weak) id<ALDebugViewDataSource>           datasource;
-@property (nonatomic) BOOL                           isDisplayed;
+@property (weak) id<ALDebugViewDelegate>                       delegate;
+@property (weak) id<ALDebugViewDataSource>                     datasource;
+@property (nonatomic,getter=isDisplayed) BOOL                  display;
+@property (nonatomic, getter=deploymentMode) ALDDeploymentMode mode;
 
 + (instancetype)sharedDebugView;
 @end

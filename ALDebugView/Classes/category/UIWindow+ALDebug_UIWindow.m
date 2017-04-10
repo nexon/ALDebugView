@@ -13,7 +13,7 @@
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
     if(motion == UIEventSubtypeMotionShake) {
         
-        if(![ALDebugListViewController sharedDebugView].isDisplayed) {
+        if(![ALDebugListViewController sharedDebugView].isDisplayed && [ALDebugListViewController sharedDebugView].deploymentMode == ALDDeploymentDebugMode) {
             UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[ALDebugListViewController sharedDebugView]];
             
             [[self rootViewController] presentViewController:navigationController animated:YES completion:nil];

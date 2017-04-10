@@ -37,6 +37,12 @@
     
     [ALDebugListViewController sharedDebugView].delegate   = self;
     [ALDebugListViewController sharedDebugView].datasource = self;
+
+#if DEBUG
+    [[ALDebugListViewController sharedDebugView] setMode: ALDDeploymentDebugMode];
+#else
+    [[ALDebugListViewController sharedDebugView] setMode: ALDDeploymentNoneMode];
+#endif
     
     return YES;
 }

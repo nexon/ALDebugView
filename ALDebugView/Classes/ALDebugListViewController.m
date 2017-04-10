@@ -32,6 +32,15 @@
 
 #pragma mark - Init
 
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if(self) {
+        _mode = ALDDeploymentDebugMode;
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupNavigationController];
@@ -40,7 +49,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.isDisplayed = YES;
+    self.display = YES;
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
@@ -77,7 +86,7 @@
         [self.delegate ALDebugViewWillCloseView:self];
     }
     
-    self.isDisplayed = NO;
+    self.display = NO;
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
